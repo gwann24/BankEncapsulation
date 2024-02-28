@@ -28,9 +28,10 @@ namespace BankEncapsulation
                 Console.WriteLine("2. Withdraw money from your Account");
                 Console.WriteLine("3. Check the balace of your Account");
                 Console.WriteLine("0. Exit");
-                int.TryParse(Console.ReadLine(), out int uSelect);
-                switch (uSelect)
-                {
+                if (int.TryParse(Console.ReadLine(), out int uSelect))
+                {                
+                   switch (uSelect)
+                   {
                     case 1:
                         Console.WriteLine("Enter the amount of money you wish to desposit:");
                         double.TryParse(Console.ReadLine(), out double funds);
@@ -51,7 +52,12 @@ namespace BankEncapsulation
                         break;
                     default:
                         break;
-                }
+                   };
+                } else
+                {
+                    Console.WriteLine($"\n\nOops! Please select a valid option.");
+                    Wait4KeyPress();
+                };                                
             } while (keepGoing);
         }
     }
